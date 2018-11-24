@@ -10,6 +10,18 @@ function getItemsAndTotalQuantityByBarcodes(barcodesList){
 }
 
 function parseBarcodeListToCodeAndQuantity(barcodesList){
+	let barcodesOccurenceList = {};
+
+	barcodesList.forEach(barcode => {
+		let parsedBarcode = barcode.split('-')[0];
+		if (barcodesOccurenceList[parsedBarcode]) {
+			barcodesOccurenceList[parsedBarcode] += parseQuantityFromBarcode(barcode);
+		} else {
+			barcodesOccurenceList[parsedBarcode] = parseQuantityFromBarcode(barcode);
+		}
+	});
+
+	return barcodesOccurenceList;
 }
 
 function parseQuantityFromBarcode(barcode){
