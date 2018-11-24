@@ -7,6 +7,11 @@ function printReceipt(barcodesList){
 }
 
 function getItemsAndTotalQuantityByBarcodes(barcodesList){
+	let barcodesAndQuantityMap = parseBarcodeListToCodeAndQuantity(barcodesList);
+	return Object.keys(barcodesAndQuantityMap).map(barcode => {
+		let parsedBarcode = barcode.split('-')[0];
+		return {'item': getItemByBarcode(parsedBarcode), 'quantity': barcodesAndQuantityMap[parsedBarcode]};
+	});
 }
 
 function parseBarcodeListToCodeAndQuantity(barcodesList){
