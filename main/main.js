@@ -29,6 +29,8 @@ function parseQuantityFromBarcode(barcode){
 }
 
 function getItemByBarcode(barcode){
+	let allItemsList = loadAllItems();
+	return allItemsList.find(item => item.barcode === barcode);
 }
 
 function getReceiptInfoByItemsAndQuantity(itemsAndQuantityMap){
