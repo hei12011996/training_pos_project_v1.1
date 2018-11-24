@@ -75,6 +75,13 @@ function isPromotedItem(item, promotionBarcodesList){
 }
 
 function calculateTotalAndSave(itemWithQuantityAndSubtotal){
+	let total = 0;
+	let save = 0;
+	itemWithQuantityAndSubtotal.forEach(itemInfo => {
+		total += itemInfo.subTotal;
+		save += itemInfo.unitPrice * itemInfo.quantity.split(' ')[0] - itemInfo.subTotal;
+	})
+	return [total, save];
 }
 
 function getReceiptByReceiptInfo(receiptInfo){
