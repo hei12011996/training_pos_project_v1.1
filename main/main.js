@@ -13,6 +13,7 @@ function parseBarcodeListToCodeAndQuantity(barcodesList){
 }
 
 function parseQuantityFromBarcode(barcode){
+	return barcode.includes('-') ? Number(barcode.split('-')[1]) : 1;
 }
 
 function getItemByBarcode(barcode){
