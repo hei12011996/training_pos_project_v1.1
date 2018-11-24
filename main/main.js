@@ -51,6 +51,7 @@ function getSubTotalWithBuyTwoGetOneFree(item, quantity){
 }
 
 function isPromotedItem(item, promotionBarcodesList){
+	return promotionBarcodesList.includes(item.barcode);
 }
 
 function calculateTotalAndSave(itemWithQuantityAndSubtotal){
