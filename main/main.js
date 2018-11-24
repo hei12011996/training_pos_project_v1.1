@@ -45,6 +45,18 @@ function constructQuantityString(quantity, unit){
 }
 
 function getSubTotalByPromotions(item, quantity){
+	let subTotal = 0;
+	let promotionsInfo = loadPromotions();
+
+	promotionsInfo.forEach(promotionInfo => {
+		if (isPromotedItem(item, promotionInfo.barcodes) && promotionInfo.type === 'BUY_TWO_GET_ONE_FREE'){
+			subTotal = getSubTotalWithBuyTwoGetOneFree(item, quantity);
+		} else {
+			subTotal = item.price * quantity;
+		}
+	});
+
+	return subTotal;
 }
 
 function getSubTotalWithBuyTwoGetOneFree(item, quantity){
