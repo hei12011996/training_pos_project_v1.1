@@ -48,6 +48,8 @@ function getSubTotalByPromotions(item, quantity){
 }
 
 function getSubTotalWithBuyTwoGetOneFree(item, quantity){
+	let actualQuantity = quantity - parseInt(quantity / 3);
+	return item.price * actualQuantity;
 }
 
 function isPromotedItem(item, promotionBarcodesList){
