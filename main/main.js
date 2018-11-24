@@ -98,6 +98,14 @@ function calculateTotalAndSave(itemWithQuantityAndSubtotal){
 }
 
 function getReceiptByReceiptInfo(receiptInfo){
+	let receiptString = "***<store earning no money>Receipt ***\n";
+	receiptInfo.boughtItemsInfo.forEach(boughtItemInfo => {
+		receiptString += `Name: ${boughtItemInfo.name}, Quantity: ${boughtItemInfo.quantity}, Unit price: ${boughtItemInfo.unitPrice.toFixed(2)} (yuan), Subtotal: ${boughtItemInfo.subTotal.toFixed(2)} (yuan)\n`;
+	});
+	receiptString += "----------------------\n";
+	receiptString += `Total: ${receiptInfo.total.toFixed(2)} (yuan)\n`;
+	receiptString += `Saving: ${receiptInfo.save.toFixed(2)} (yuan)\n`;
+	return receiptString;
 }
 
 module.exports = {
