@@ -4,6 +4,10 @@ const loadAllItems = fixtures.loadAllItems;
 const loadPromotions = fixtures.loadPromotions;
 
 function printReceipt(barcodesList){
+	let itemsAndQuantityMap = getItemsAndTotalQuantityByBarcodes(barcodesList);
+	let receiptInfo = getReceiptInfoByItemsAndQuantity(itemsAndQuantityMap);
+	let receipt = getReceiptByReceiptInfo(receiptInfo);
+	return receipt;
 }
 
 function getItemsAndTotalQuantityByBarcodes(barcodesList){
